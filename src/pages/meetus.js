@@ -1,46 +1,34 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FcEngineering } from "react-icons/fc";
-import { FaBars } from "react-icons/fa";
 import ImageCarousel from '../components/Carousel';
 import styled from 'styled-components';
-import dr from '../images/dr.jpg'
-
-import { Nav, NavbarContainer, NavLogo, LogoIcon, MobileIcon } from '../components/Navbar/NavbarElements.js'; // Import your Navbar elements
-import shab2 from '../images/shab2.png'
-import thomas from '../images/thomas.jpg'
-import Karl from '../images/Karl.jpg';
-import { Carousel } from 'react-responsive-carousel';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-import benet2 from '../images/benet2.png'
-
-
+import { Nav, NavbarContainer, NavLogo, LogoIcon } from '../components/Navbar/NavbarElements.js';
 
 const IntroParagraph = styled.p`
     text-align: center;
     font-size: 1.2rem;
     line-height: 1.6;
-    color: #white;
+    color: #fff;
     max-width: 800px;
-    
 `;
 
+const Container = styled.div`
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    padding: 5rem;
+    grid-template-rows: auto 1fr;
+`;
 
-
-
-const containerStyle = {
-    display: 'grid',
-    placeItems: 'center', // This will center the items both horizontally and vertically
-    height: '100vh', // Make the container take up the full viewport height
-    backgroundColor: '#000',
-    color: '#fff',
-    padding: '5rem',
-    gridTemplateRows: 'auto 1fr', // This will create two rows: one for the title and one for the carousel
-}
+const Title = styled.h1`
+    margin-top: 2rem;
+    text-align: center;
+`;
 
 const MeetTheTeam = () => {
-    
-      const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => {
         setIsOpen(!isOpen);
@@ -51,22 +39,22 @@ const MeetTheTeam = () => {
             <Nav>
                 <NavbarContainer>
                     <NavLogo to='/'>
-                        <LogoIcon> 
+                        <LogoIcon>
                             <FcEngineering />
                         </LogoIcon>
                         Pressure Vessel
                     </NavLogo>
-                 
                 </NavbarContainer>
             </Nav>
-            <div style={containerStyle}>
-                <h1 style={{ marginTop: '2rem', textAlign: 'center' }}>Meet the Team</h1>
+            <Container>
+                <Title>Meet the Team</Title>
                 <IntroParagraph>
                     We are a team of 4th year software and mechanical engineering students working on our multi-disciplinary project. Our supervisor is<strong style={{ color: '#FFA500' }}> Dr. Hussein Farroukh </strong>. This project is the result of months of research, hard work, and collaboration. We are excited to share our progress and look forward to the challenges ahead.
                 </IntroParagraph>
-                <ImageCarousel /> {/* Use the ImageCarousel component here */}
-            </div>
+                <ImageCarousel />
+            </Container>
         </>
     );
 };
+
 export default MeetTheTeam;
